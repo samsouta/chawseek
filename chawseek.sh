@@ -11,7 +11,7 @@ CYAN="\033[96m"
 BOLD="\033[1m"
 RESET="\033[0m"
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 
 # Detect OS
 OS_TYPE="$(uname -s 2>/dev/null || echo "Unknown")"
