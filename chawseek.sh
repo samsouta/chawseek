@@ -12,6 +12,7 @@ BOLD="\033[1m"
 RESET="\033[0m"
 
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+VERSION=$(cat "$SCRIPT_DIR/VERSION" 2>/dev/null | tr -d '[:space:]' || echo "unknown")
 
 # Detect OS
 OS_TYPE="$(uname -s 2>/dev/null || echo "Unknown")"
@@ -39,7 +40,7 @@ fi
 if [ $# -lt 1 ] || [ -z "${1:-}" ]; then
   echo -e "${CYAN}${BOLD}"
   echo "  ╔══════════════════════════════════╗"
-  echo "  ║   🔍  CHAWSEEK v1.0             ║"
+  echo "  ║   🔍  CHAWSEEK v${VERSION}             ║"
   echo "  ║      Smart File Search           ║"
   echo "  ╚══════════════════════════════════╝"
   echo -e "${RESET}"
@@ -53,7 +54,7 @@ QUERY="$1"
 # Print branded header
 echo -e "${CYAN}${BOLD}"
 echo "  ╔══════════════════════════════════════════╗"
-echo "  ║        🔍  CHAWSEEK v1.0                ║"
+echo "  ║        🔍  CHAWSEEK v${VERSION}                ║"
 echo "  ║           Smart File Search              ║"
 echo "  ╚══════════════════════════════════════════╝"
 echo -e "${RESET}"

@@ -5,6 +5,16 @@ import time
 import subprocess
 import shutil
 
+def _load_version() -> str:
+    version_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "VERSION")
+    try:
+        with open(version_file) as f:
+            return f.read().strip()
+    except OSError:
+        return "unknown"
+
+VERSION = _load_version()
+
 # ANSI colors — disabled when not a tty
 if sys.stdout.isatty():
     RESET  = "\033[0m"
@@ -76,7 +86,7 @@ def print_section_header(title: str) -> None:
 
 def main() -> None:
     if len(sys.argv) < 3:
-        print(f"{RED}Usage: search.py <query> <root_dir>{RESET}", file=sys.stderr)
+        print(f"{RED}Chawseek v{VERSION} — Usage: search.py <query> <root_dir>{RESET}", file=sys.stderr)
         sys.exit(1)
 
     query     = sys.argv[1]

@@ -10,10 +10,11 @@ BOLD="\033[1m"
 RESET="\033[0m"
 
 INSTALL_DIR="$(cd "$(dirname "$0")" && pwd)"
+VERSION=$(cat "$INSTALL_DIR/VERSION" 2>/dev/null | tr -d '[:space:]' || echo "unknown")
 
 echo -e "${CYAN}${BOLD}"
 echo "  ╔══════════════════════════════════════════╗"
-echo "  ║     🔍  CHAWSEEK v1.0 — Installer       ║"
+echo "  ║     🔍  CHAWSEEK v${VERSION} — Installer       ║"
 echo "  ╚══════════════════════════════════════════╝"
 echo -e "${RESET}"
 
